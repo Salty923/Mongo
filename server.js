@@ -25,11 +25,13 @@ request("https://www.meetup.com/cities/us/il/chicago/tech/", function (error, re
 
         var link = $(element).attr("href");
         var title = $(element).text();
+        //var image = $(element).attr('style');
 
         // Save these results in an object that we'll push into the results array we defined earlier
         results.push({
             title: title,
-            link: link
+            link: link,
+            //image: image
         });
     });
 
