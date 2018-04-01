@@ -20,6 +20,6 @@ var MeetUpSchema = new Schema({
     }
 });
 
-var Meetup = mongoose.model('Meetup', MeetUpSchema);
+var MeetUp = mongoose.model('Meetup', MeetUpSchema);
 
 module.exports = MeetUp;
