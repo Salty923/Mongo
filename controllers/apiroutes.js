@@ -3,12 +3,32 @@ var cheerio = require('cheerio');
 var request = require('request');
 var router = express.Router();
 var db = require('../models/');
+var mongoose = require('mongoose');
+var mongojs = require("mongojs");
+
+
+var databaseUrl = "Meetup_db";
+var collections = ["MeetUps"];
+
+// Hook mongojs configuration to the db variable
+var db = mongojs(databaseUrl, collections);
+db.on("error", function (error) {
+    console.log("Database Error:", error);
+});
+
 
 var app = express();
 
+router.get("/", function (req, res) {
+    // Make a request call to grab the HTML body from the site of your choice
 
 
-router.get("/scrape", function (req, res) {
+    res.render("index");
+});
+
+
+
+router.get("/data", function (req, res) {
     // Make a request call to grab the HTML body from the site of your choice
     request("https://www.meetup.com/cities/us/il/chicago/tech/", function (error, response, html) {
 
@@ -16,30 +36,29 @@ router.get("/scrape", function (req, res) {
         // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
         var $ = cheerio.load(html);
 
+
+        var results = [];
+
         // Select each element in the HTML body from which you want information.
         // NOTE: Cheerio selectors function similarly to jQuery's selectors,
         // but be sure to visit the package's npm page to see how it works
         $("a.display-none").each(function (i, element) {
             // An empty array to save the data that we'll scrape
-            var results = {};
-
-            results.title = $(this)
-             .text();
-             result.link = $(this)
-             .attr('href');
+          
+            var title = $(element).text();
+            var link = $(element).attr('href');
             
-             db.MeetUp.create(result)
-             .then(function (dbMeetUp) {
-                 console.log(dbMeetUp);
-             })
-             .catch(function (err) {
-                 return res.json(err);
-             });
+            results.push({
+                title,
+                link
+            });
         });
-        res.send('scrape worked');
+        db.MeetUps.insert(results);
+        res.json(results);
     });
 });
 
+module.exports = router;
 // app.get("/articles", function (req, res) {
 //     // TODO: Finish the route so it grabs all of the articles
 //     db.Article.find()

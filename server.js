@@ -21,8 +21,6 @@ var routes = require("./controllers/apiroutes.js");
 
 app.use(routes);
 
-app.use('/scrape', routes);
-
 
 
 
@@ -41,6 +39,7 @@ mongoose.connect(MONGODB_URI, {
 // db.on("error", function (error) {
 //     console.log("Database Error:", error);
 // });
+
 
 
 app.listen(PORT, function() {
