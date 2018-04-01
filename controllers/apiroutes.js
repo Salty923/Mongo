@@ -5,6 +5,7 @@ var router = express.Router();
 var db = require('../models/');
 var mongoose = require('mongoose');
 var mongojs = require("mongojs");
+var axios = require("axios");
 
 
 var databaseUrl = "Meetup_db";
@@ -19,11 +20,20 @@ db.on("error", function (error) {
 
 var app = express();
 
+// Route for getting all Articles from the db
 router.get("/", function (req, res) {
-    // Make a request call to grab the HTML body from the site of your choice
-
-
-    res.render("index");
+    // Grab every document in the Articles collection
+    db.MeetUps.find({},function (err, data) {
+        if (err) {
+            console.log(err);
+        }else{
+            var hbsObject ={
+                meetup: data
+            }
+            console.log(hbsObject);
+            res.render('index',hbsObject)
+        }
+    })
 });
 
 
@@ -57,6 +67,9 @@ router.get("/data", function (req, res) {
         res.json(results);
     });
 });
+
+
+ 
 
 module.exports = router;
 // app.get("/articles", function (req, res) {

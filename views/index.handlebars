@@ -13,7 +13,7 @@
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <h2>You have been served</h2>
                 <div class="devoured text-center">
-                    {{#each burgers}} {{#unless devoured}}
+                    {{#each burgers}} 
                     <div class="burger_div text-center">
                         <div class="text-center">
                             <p class="text-center">{{this.burger_name}}
@@ -23,19 +23,19 @@
                             </p>
                         </div>
                     </div>
-                    {{/unless}} {{/each}}
+                    {{/each}}
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <h2>You have been served</h2>
                 <div class="devoured text-center">
-                    {{#each burgers}} {{#if devoured}}
+                    {{#each burgers}} 
                     <div class="burger_div text-center">
                         <div class="text-center">
                             <p class="text-center">{{this.burger_name}}</p>
                         </div>
                     </div>
-                    {{/if}} {{/each}}
+                    {{/each}}
                 </div>
             </div>
         </div>
