@@ -23,13 +23,16 @@ app.use(routes);
 
 
 
-var databaseUri = "mongodb://localhost/meetups_db";
+// var databaseUri = "mongodb://localhost/meetups_db";
 
-if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI);
-}else{
-    mongoose.connect(databaseUri);
-}
+//connect to db
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScrape_db";
+
+// if (process.env.MONGODB_URI) {
+//     mongoose.connect(process.env.MONGODB_URI);
+// }else{
+//     mongoose.connect(databaseUri);
+// }
 
 var db = mongoose.connection;
 
@@ -44,16 +47,16 @@ db.once('open', function(){
 // // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/meetups_db";
 
-// // Set mongoose to leverage built in JavaScript ES6 Promises
-// // Connect to the Mongo DB
-// mongoose.Promise = Promise;
-// mongoose.connect(MONGODB_URI, {
-//     // useMongoClient: true
-// });
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+    // useMongoClient: true
+});
 
 
 
-
+//maybe try that 
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
