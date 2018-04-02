@@ -2,5 +2,5 @@
 
 module.exports = {
     Article: require("./Comments"),
-    Note: require("./MeetUp")
+    //Note: require("./MeetUp")
 };
