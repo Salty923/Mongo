@@ -1,0 +1,25 @@
+.head{
+    background-image: url("../img/head.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    height: 350px;
+}
+
+body{
+    background: rgb(224, 224, 224);
+    color: floralwhite;
+}
+
+.nav{
+    background: rgb(54, 54, 54);
+    height: 85px;
+    padding-left: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.listing{
+    color: black;
+    font-size: 20px;
+    border: 1px solid red;
+}
