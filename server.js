@@ -4,7 +4,7 @@ var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var app = express();
 var PORT = process.env.PORT || 3000;
-var db = require("./models");
+//var db = require("./models");
 
 
 app.use(express.static("public"));
@@ -35,10 +35,7 @@ mongoose.connect(MONGODB_URI, {
     // useMongoClient: true
 });
 
-// This makes sure that any errors are logged if mongodb runs into an issue
-// db.on("error", function (error) {
-//     console.log("Database Error:", error);
-// });
+
 
 
 
