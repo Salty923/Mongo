@@ -4,6 +4,8 @@ var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 // Initialize Express
 var app = express();
+var cheerio = require("cheerio");
+var request = require("request");
 var PORT = process.env.PORT || 3000;
 
 
