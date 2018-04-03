@@ -1,12 +1,14 @@
 var express = require("express");
 var router = express.Router();
+var mongoose = require("mongoose");
 var mongojs = require("mongojs");
-var db = require('../models');
+var db = require("../models");
 
 
 //mongo db config
 var databaseUrl = "Meetup_db";
 var collections = ["MeetUps"];
+
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on("error", function (error) {

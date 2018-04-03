@@ -1,32 +1,25 @@
+//express setup
 var express = require("express");
+var router = express.Router();
+
+//cherrio for html scrape
 var cheerio = require('cheerio');
 var request = require('request');
-var router = express.Router();
+
+//require models
 var db = require('../models/');
+
+//mongoose
 var mongoose = require('mongoose');
-var mongojs = require("mongojs");
-var axios = require("axios");
 
 
-var databaseUrl = "Meetup_db";
-var collections = ["MeetUps"];
-
-
-
-
-var app = express();
-
-
-
-router.get("/data", function (req, res) {
+router.get("/api", function (req, res) {
     // Make a request call to grab the HTML body from the site of your choice
     request("https://www.meetup.com/cities/us/il/chicago/tech/", function (error, response, html) {
 
         // Load the HTML into cheerio and save it to a variable
         // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
         var $ = cheerio.load(html);
-
-
         var results = [];
 
         // Select each element in the HTML body from which you want information.
