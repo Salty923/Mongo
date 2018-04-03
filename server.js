@@ -22,9 +22,11 @@ app.set("view engine", "handlebars");
 
 
 //routes
-var routes = require("./controllers/apiroutes.js");
+var apiroutes = require("./controllers/apiroutes.js");
+var htmlroutes = require("./controllers/htmlroutes.js");
 
-app.use(routes);
+app.use(apiroutes);
+app.use(htmlroutes);
 
 
 //connect to db
