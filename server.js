@@ -2,18 +2,10 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
-var logger = require("morgan");
 // Initialize Express
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-
-
-// Require all models
-var db = require("./models");
-
-// Use morgan logger for logging requests
-app.use(logger("dev"));
 
 app.use(express.static("public"));
 
