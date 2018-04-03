@@ -1,5 +1,5 @@
 
 module.exports = {
-    Article: require("./Comments"),
-    Note: require("./MeetUp")
+    Comments: require("./Comments"),
+    Meetup: require("./MeetUp")
 };
