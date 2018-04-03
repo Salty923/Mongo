@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var MeetUpSchema = new Schema({
@@ -14,10 +13,10 @@ var MeetUpSchema = new Schema({
         required: true
     },
     //Comments added by users
-    comments:{
+    comments:[{
         type: Schema.Types.ObjectId,
         ref: "Comments"
-    }
+    }]
 });
 
 var MeetUp = mongoose.model('Meetup', MeetUpSchema);

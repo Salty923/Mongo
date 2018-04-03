@@ -1,10 +1,16 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var CommentsSchema = new Schema({
-    title: String,
-    body: String
+    title:{
+        type: String,
+        required: true
+    },
+     comment:{
+         type: String,
+         required: true
+     }
+
 });
 
 var Comments = mongoose.model('Comment', CommentsSchema);
