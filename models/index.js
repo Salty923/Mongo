@@ -1,5 +1,5 @@
 
 module.exports = {
     Comments: require("./Comments"),
-    Meetup: require("./MeetUp")
+    Meetup: require("./MeetUp.js")
 };
