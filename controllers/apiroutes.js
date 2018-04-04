@@ -7,7 +7,7 @@ var cheerio = require('cheerio');
 var request = require('request');
 
 //require models
-var db = require('../models/');
+var db = require('../models');
 
 //mongoose
 var mongoose = require('mongoose');
